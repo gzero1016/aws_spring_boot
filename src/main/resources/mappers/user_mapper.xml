@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aws.spring_study.repository.UserMappers">
+
+    <!--  오버라이드기 때문에 매개변수랑 parametertype이 동일해야함(insert,update,delete 는 반환이 무조건 개수(int))  -->
+    <insert id="saveUser" parameterType="com.aws.spring_study.dto.RegisterUserReqDto">  <!-- 메소드명이랑 id가 동일해야한다.-->
+        insert into user_tb
+        values (0, #{username}, #{name}, #{phone})
+    </insert>
+
+</mapper>
