@@ -15,8 +15,8 @@ public class UsersController {
     @Autowired
     private UserMappers userMappers;
 
-    @CrossOrigin
-    @PostMapping("/user")
+    @CrossOrigin    // 허용경로 어노테이션
+    @PostMapping("/user")            // 어노테이션 사용으로 json 또는 데이터타입으로 받겠다는거
     public ResponseEntity<?> registerUser(@RequestBody RegisterUserReqDto registerUserReqDto) {
 
         Integer count = userMappers.saveUser(registerUserReqDto);
