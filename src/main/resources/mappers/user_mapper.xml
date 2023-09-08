@@ -13,4 +13,32 @@
         values (0, #{username}, #{name}, #{phone})
     </insert>
 
+    <select id="getUserListAll" resultType="com.aws.spring_study.entity.User">
+        select
+            user_id as userId,  <!-- *을 들고오지않는 이유는 자바랑 db의 이름이 다르기때문에 as로 변경해줘야함 -->
+            username,
+            name,
+            phone
+        from
+            user_tb
+    </select>
+<!-- 위 쿼리문 검색 결과를 resultType으로 변환시켜줌(join이나 또는 타입의 개수 자료형이 같을때만 사용할수있음) -->
+
+    <update id="updateUserList" parameterType="com.aws.spring_study.dto.ModifyUserReqDto">
+        update
+            user_tb
+        set
+            username = #{username},
+            name = #{name},
+            phone = #{phone}
+        where
+            user_id = #{userId}
+    </update>
+
+    <delete id="deleteUserList" parameterType="integer">
+        delete from
+            user_tb
+        where
+            user_id = #{userId}
+    </delete>
 </mapper>
